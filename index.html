@@ -1,1 +1,774 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECK24 Hire-a-Friend Empfehlung</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #022D94 0%, #0052cc 100%);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: none;
+      position: relative;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+    }
+
+    .header-content {
+      width: 100%;
+    }
+
+    .header-title {
+      font-size: 2.5em;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .header-title .brand {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    /* Bestätigungsseite Styles */
+    .success-page {
+      display: none;
+      text-align: center;
+      padding: 0;
+    }
+
+    .success-header {
+      background: linear-gradient(135deg, #022D94 0%, #0052cc 100%);
+      padding: 40px 20px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .success-header-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .success-header-title {
+      font-size: 2.2em;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .success-header-title .brand {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .success-illustrations {
+      flex: 1;
+      position: relative;
+      height: 140px;
+      margin-left: 40px;
+    }
+
+    .success-person {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    }
+
+    .success-person1 {
+      background: #FFE4B5;
+      width: 50px;
+      height: 70px;
+      top: 10px;
+      left: 20px;
+      transform: rotate(-5deg);
+    }
+
+    .success-person2 {
+      background: #8B4513;
+      width: 45px;
+      height: 65px;
+      top: 20px;
+      left: 80px;
+      transform: rotate(5deg);
+    }
+
+    .success-person3 {
+      background: #F4A460;
+      width: 55px;
+      height: 75px;
+      top: 5px;
+      right: 70px;
+      transform: rotate(-3deg);
+    }
+
+    .success-person4 {
+      background: #D2B48C;
+      width: 50px;
+      height: 70px;
+      top: 25px;
+      right: 15px;
+      transform: rotate(8deg);
+    }
+
+    .success-logo-circle {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      background: #022D94;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .success-logo-circle svg {
+      width: 50px;
+      height: 20px;
+      fill: white;
+    }
+
+    .success-content {
+      background: white;
+      padding: 60px 30px 40px 30px;
+      margin: 0;
+    }
+
+    .success-title {
+      color: #022D94;
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .success-message {
+      color: #2c3e50;
+      font-size: 1.1em;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+    }
+
+    .success-button {
+      background: linear-gradient(45deg, #022D94, #011A66);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(2, 45, 148, 0.3);
+    }
+
+    .success-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 45, 148, 0.4);
+    }
+
+    .form-content {
+      padding: 30px;
+    }
+
+    .form-title {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .form-subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .section-title {
+      background: #022D94;
+      color: white;
+      padding: 12px 20px;
+      margin: 30px -30px 20px -30px;
+      font-size: 1.2em;
+      font-weight: 600;
+      border-left: 5px solid #022D94;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    .required::after {
+      content: ' *';
+      color: #e74c3c;
+    }
+
+    input, select, textarea {
+      padding: 12px 15px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: #ffffff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #022D94;
+      box-shadow: 0 0 0 3px rgba(2, 45, 148, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    .submit-section {
+      background: #f8f9fa;
+      margin: 30px -30px -30px -30px;
+      padding: 25px 30px;
+      text-align: center;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #022D94, #011A66);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(2, 45, 148, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 45, 148, 0.4);
+    }
+
+    .info-text {
+      background: #e8f0ff;
+      border-left: 4px solid #022D94;
+      padding: 15px;
+      margin-bottom: 25px;
+      border-radius: 0 8px 8px 0;
+      color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-content {
+        padding: 20px;
+      }
+      
+      .section-title {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      
+      .submit-section {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 20px;
+      }
+
+      .header {
+        min-height: 120px;
+        padding: 40px 20px;
+      }
+
+      .header-title {
+        font-size: 1.8em;
+      }
+
+      .success-header {
+        flex-direction: column;
+        text-align: center;
+        min-height: 150px;
+        padding: 30px 20px;
+      }
+
+      .success-illustrations {
+        margin-left: 0;
+        margin-top: 20px;
+        height: 100px;
+      }
+
+      .success-header-title {
+        font-size: 1.8em;
+      }
+
+      .success-person {
+        width: 35px;
+        height: 50px;
+      }
+
+      .success-person1 {
+        width: 35px;
+        height: 50px;
+      }
+
+      .success-person2 {
+        width: 30px;
+        height: 45px;
+      }
+
+      .success-person3 {
+        width: 40px;
+        height: 55px;
+      }
+
+      .success-person4 {
+        width: 35px;
+        height: 50px;
+      }
+
+      .success-content {
+        padding: 40px 20px;
+      }
+
+      .success-title {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hauptformular -->
+    <div id="main-form">
+      <div class="header">
+        <div class="header-content">
+          <div class="header-title">
+            Deine Empfehlung für<br>
+            <span class="brand">CHECK24</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-content">
+      <h1 class="form-title">Mitarbeiterempfehlung (Hire a Friend)</h1>
+      <p class="form-subtitle">Empfiehl Freunde oder Bekannte für CHECK24</p>
+
+      <div class="info-text">
+        <strong>Hinweis:</strong> Mit diesem Formular kannst du als CHECK24-Mitarbeiter Freunde oder Bekannte empfehlen. 
+        Unser Active Sourcing Team wird die empfohlene Person über LinkedIn oder Xing kontaktieren.
+      </div>
+
+      <form id="referralForm" action="#" method="post">
+        
+        <!-- Empfehlende Person -->
+        <h2 class="section-title">Deine Daten als empfehlender Mitarbeiter (m/w/d) von CHECK24</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="referrer_name" class="required">Dein Name</label>
+            <input type="text" id="referrer_name" name="referrer_name" required>
+          </div>
+          <div class="form-group">
+            <label for="referrer_email" class="required">Deine E-Mail</label>
+            <input type="email" id="referrer_email" name="referrer_email" required>
+          </div>
+          <div class="form-group">
+            <label for="referrer_position" class="required">Deine Position (z.B. Kundenberater/in)</label>
+            <input type="text" id="referrer_position" name="referrer_position" required placeholder="z.B. Kundenberater/in, Developer, Produktmanager/in">
+          </div>
+          <div class="form-group">
+            <label for="referrer_vertical" class="required">Dein Vertical</label>
+            <input type="text" id="referrer_vertical" name="referrer_vertical" required>
+          </div>
+        </div>
+
+        <!-- Profil der empfohlenen Person -->
+        <h2 class="section-title">Profil der empfohlenen Person / Profile</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="gender">Geschlecht / Gender</label>
+            <select id="gender" name="gender">
+              <option value="">-- Bitte wählen --</option>
+              <option value="female">Weiblich / Female</option>
+              <option value="male">Männlich / Male</option>
+              <option value="diverse">Divers / Diverse</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="title">Anredetitel / Title</label>
+            <select id="title" name="title">
+              <option value="">-- Bitte wählen --</option>
+              <option value="herr">Herr / Mr.</option>
+              <option value="frau">Frau / Mrs.</option>
+              <option value="dr">Dr.</option>
+              <option value="prof">Prof.</option>
+              <option value="prof_dr">Prof. Dr.</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="first_name" class="required">Vorname / First name</label>
+            <input type="text" id="first_name" name="first_name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="surname" class="required">Nachname / Surname</label>
+            <input type="text" id="surname" name="surname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ort / City</label>
+            <input type="text" id="city" name="city">
+          </div>
+
+          <div class="form-group">
+            <label for="country">Land / Country</label>
+            <select id="country" name="country">
+              <option value="">-- Bitte wählen --</option>
+              <option value="DE">Deutschland / Germany</option>
+              <option value="AT">Österreich / Austria</option>
+              <option value="CH">Schweiz / Switzerland</option>
+              <option value="FR">Frankreich / France</option>
+              <option value="IT">Italien / Italy</option>
+              <option value="ES">Spanien / Spain</option>
+              <option value="NL">Niederlande / Netherlands</option>
+              <option value="BE">Belgien / Belgium</option>
+              <option value="PL">Polen / Poland</option>
+              <option value="CZ">Tschechien / Czech Republic</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Mail (falls bekannt)</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobil / Mobile phone (falls bekannt)</label>
+            <input type="tel" id="mobile" name="mobile">
+          </div>
+        </div>
+
+        <!-- Berufliche Informationen -->
+        <h2 class="section-title">Berufliche Informationen / Professional Information</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="profile_link">LinkedIn/Xing Profil URL</label>
+            <input type="url" id="profile_link" name="profile_link" placeholder="https://www.linkedin.com/in/... oder https://www.xing.com/profile/...">
+          </div>
+
+          <div class="form-group">
+            <label for="current_position">Aktuelle Position / Current Position (wenn bekannt)</label>
+            <input type="text" id="current_position" name="current_position" placeholder="z.B. Senior Developer">
+          </div>
+
+          <div class="form-group">
+            <label for="current_company">Aktuelles Unternehmen / Current Company (wenn bekannt)</label>
+            <input type="text" id="current_company" name="current_company">
+          </div>
+        </div>
+
+        <!-- Sonstiges -->
+        <h2 class="section-title">Sonstiges / Miscellaneous</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="comments">Zusätzliche Kommentare / Additional Comments</label>
+            <textarea id="comments" name="comments" placeholder="Warum empfiehlst du diese Person? Besondere Qualifikationen? Persönliche Stärken?"></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <div class="checkbox-group">
+              <input type="checkbox" id="consent" name="consent" required>
+              <label for="consent" class="required">Ich bestätige, dass mir diese Person persönlich bekannt ist</label>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <div class="checkbox-group">
+              <input type="checkbox" id="data_protection" name="data_protection" required>
+              <label for="data_protection" class="required">Ich stimme der Verarbeitung der Daten gemäß Datenschutzerklärung zu</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-section">
+          <button type="submit" class="submit-btn">Empfehlung absenden / Submit Referral</button>
+          <p style="margin-top: 15px; color: #7f8c8d; font-size: 0.9em;">
+            Nach dem Absenden wird unser Active Sourcing Team die empfohlene Person über LinkedIn oder Xing kontaktieren.
+          </p>
+        </div>
+      </form>
+    </div>
+    </div>
+
+    <!-- Bestätigungsseite -->
+    <div id="success-page" class="success-page">
+      <div class="success-header">
+        <div class="success-header-content">
+          <div class="success-header-title">
+            Deine Empfehlung für<br>
+            <span class="brand">CHECK24</span>
+          </div>
+        </div>
+        
+        <div class="success-illustrations">
+          <!-- Personen-Illustrationen -->
+          <div class="success-person success-person1"></div>
+          <div class="success-person success-person2"></div>
+          <div class="success-person success-person3"></div>
+          <div class="success-person success-person4"></div>
+        </div>
+        
+        <!-- CHECK24 Logo im Kreis -->
+        <div class="success-logo-circle">
+          <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">CHECK24</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="success-content">
+        <h1 class="success-title">Empfehlung erfolgreich übermittelt!</h1>
+        <p class="success-message">
+          Vielen Dank! Deine Empfehlung wurde erfolgreich übermittelt. Unser Active Sourcing Team meldet sich bei deiner Empfehlung. Bei weiteren Rückfragen kommen sie nochmals auf dich zu.<br><br>
+          <strong>Vielen Dank im Namen von CHECK24 Versicherungen für deine Empfehlung!</strong>
+        </p>
+        <button class="success-button" onclick="resetForm()">Neue Empfehlung erstellen</button>
+      </div>
+    </div>
+  </div>
+
+    <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // EmailJS initialisieren
+    (function(){
+      emailjs.init("objdBIbt99ptpZyB1");
+    })();
+
+    document.getElementById('referralForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validierung der Pflichtfelder
+      const requiredFields = document.querySelectorAll('input[required], select[required]');
+      let valid = true;
+      let firstInvalidField = null;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#e74c3c';
+          field.style.backgroundColor = '#ffeaea';
+          if (!firstInvalidField) {
+            firstInvalidField = field;
+          }
+          valid = false;
+        } else {
+          field.style.borderColor = '#e9ecef';
+          field.style.backgroundColor = '#ffffff';
+        }
+      });
+      
+      // Checkbox-Validierung
+      const checkboxes = document.querySelectorAll('input[type="checkbox"][required]');
+      checkboxes.forEach(checkbox => {
+        if (!checkbox.checked) {
+          checkbox.style.outline = '2px solid #e74c3c';
+          valid = false;
+          if (!firstInvalidField) {
+            firstInvalidField = checkbox;
+          }
+        } else {
+          checkbox.style.outline = 'none';
+        }
+      });
+      
+      if (valid) {
+        // Loading-Anzeige
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Wird gesendet...';
+        submitBtn.disabled = true;
+        
+        // Formular-Daten sammeln
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // E-Mail Parameter im gewünschten HTML-Format vorbereiten
+        const templateParams = {
+          message_html: `
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">NEUE MITARBEITEREMPFEHLUNG ========================= </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><strong>Empfehlender Mitarbeiter:</strong> ------------------------- </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Name: ${data.referrer_name} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">E-Mail: ${data.referrer_email} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Position: ${data.referrer_position} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Vertical: ${data.referrer_vertical} </span></span></p>
+<p>&nbsp;</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="color: #e03e2d;"><strong>Empfohlene Person:</strong></span> ------------------ </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Geschlecht: ${data.gender || 'Nicht angegeben'} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Anrede: ${data.title || 'Nicht angegeben'} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><strong>Name:</strong> ${data.first_name} ${data.surname} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><strong>Ort: </strong>${data.city || 'Nicht angegeben'} Land: ${data.country || 'Nicht angegeben'} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">E-Mail: ${data.email || 'Nicht angegeben'} Mobil: ${data.mobile || 'Nicht angegeben'} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Berufliche Informationen: ---------- </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="color: #3598db;"><strong>LinkedIn/Xing:</strong></span> ${data.profile_link || 'Nicht angegeben'} Aktuelle Position: ${data.current_position || 'Nicht angegeben'} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Aktuelles Unternehmen: ${data.current_company || 'Nicht angegeben'} </span></span></p>
+<p>&nbsp;</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Zusätzliche Kommentare: ----------------------- ${data.comments || 'Keine zusätzlichen Kommentare'} ---&nbsp;</span></span></p>
+<p>&nbsp;</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Eingereicht am: ${new Date().toLocaleDateString('de-DE')} um ${new Date().toLocaleTimeString('de-DE')} </span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Diese E-Mail wurde Automatisch durch das CHECK24 Empfehlungsformular generiert.</span></span></p>
+          `,
+          to_email: 'Bewerbung.Versicherung@check24.de',
+          cc_email: data.referrer_email,
+          from_name: data.referrer_name,
+          subject: 'Neue Mitarbeiterempfehlung für CHECK24'
+        };
+        
+        // E-Mail senden
+        emailjs.send('service_m3vqo3o', 'template_k1n4zmx', templateParams)
+          .then(function(response) {
+            console.log('E-Mail erfolgreich gesendet!', response.status, response.text);
+            
+            // Bestätigungsseite anzeigen
+            showSuccessPage();
+            
+          }, function(error) {
+            console.error('Fehler beim Senden der E-Mail:', error);
+            alert('❌ Fehler beim Senden der Empfehlung!\n\nBitte versuche es später erneut oder wende dich an die IT-Abteilung.');
+          })
+          .finally(function() {
+            // Button zurücksetzen
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          });
+        
+      } else {
+        alert('❌ Bitte fülle alle Pflichtfelder (*) aus und stimme den Bedingungen zu.');
+        if (firstInvalidField) {
+          firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstInvalidField.focus();
+        }
+      }
+    });
+
+    // Bestätigungsseite anzeigen
+    function showSuccessPage() {
+      document.getElementById('main-form').style.display = 'none';
+      document.getElementById('success-page').style.display = 'block';
+      
+      // Nach oben scrollen
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Formular zurücksetzen und zur Hauptseite zurückkehren
+    function resetForm() {
+      document.getElementById('referralForm').reset();
+      document.getElementById('main-form').style.display = 'block';
+      document.getElementById('success-page').style.display = 'none';
+      
+      // Nach oben scrollen
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // URL-Validierung für LinkedIn/Xing
+    document.getElementById('profile_link').addEventListener('blur', function() {
+      const url = this.value;
+      if (url && !url.includes('linkedin.com') && !url.includes('xing.com')) {
+        alert('⚠️ Bitte geben Sie eine gültige LinkedIn oder Xing URL ein.');
+        this.focus();
+      }
+    });
+
+         // Eingabe-Feedback für bessere UX
+     const inputs = document.querySelectorAll('input, select, textarea');
+     inputs.forEach(input => {
+       input.addEventListener('focus', function() {
+         this.style.borderColor = '#022D94';
+       });
+       
+       input.addEventListener('blur', function() {
+         if (this.hasAttribute('required') && !this.value.trim()) {
+           this.style.borderColor = '#e74c3c';
+         } else {
+           this.style.borderColor = '#e9ecef';
+         }
+       });
+     });
+  </script>
+</body>
+</html>
